@@ -1,1 +1,123 @@
-<p>sorting-hat-page works!</p>
+<div
+  class="max-w-2xl mx-auto p-8 bg-slate-900/70 backdrop-blur-xl rounded-3xl border border-amber-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.7)] mt-10 text-slate-200"
+>
+  <div class="text-center mb-10">
+    <span class="text-7xl drop-shadow-[0_0_20px_rgba(251,191,36,0.4)] block mb-6 animate-pulse"
+      >🎩</span
+    >
+    <h2
+      class="text-4xl md:text-5xl font-black uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 drop-shadow-sm pb-2"
+      style="font-family: 'Cinzel', serif"
+    >
+      หมวกคัดสรร
+    </h2>
+    <p class="text-amber-200/60 mt-2 font-light tracking-widest text-sm uppercase">
+      Sorting Hat Ceremony
+    </p>
+  </div>
+
+  @if (!sortedHouse()) {
+    <form (submit)="sortHouse(); $event.preventDefault()" class="space-y-6">
+      <div class="flex flex-col">
+        <label for="userNameInput" class="font-semibold mb-2 text-amber-500 tracking-wider"
+          >ชื่อของคุณพ่อมด/แม่มด:</label
+        >
+        <input
+          id="userNameInput"
+          type="text"
+          [ngModel]="userName()"
+          (ngModelChange)="userName.set($event)"
+          name="userName"
+          placeholder="ระบุนามของคุณ..."
+          class="bg-slate-950/50 border border-amber-500/30 p-4 rounded-xl text-slate-200 placeholder-slate-600 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="traitInput" class="font-semibold mb-2 text-amber-500 tracking-wider"
+          >จุดเด่นในตัวตนของคุณ?</label
+        >
+        <select
+          id="traitInput"
+          [ngModel]="trait()"
+          (ngModelChange)="trait.set($event)"
+          name="trait"
+          class="bg-slate-950/50 border border-amber-500/30 p-4 rounded-xl text-slate-200 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors cursor-pointer"
+          required
+        >
+          <option value="" disabled class="text-slate-500">-- โปรดเลือกจุดเด่น --</option>
+          <option value="brave" class="bg-slate-900 text-slate-200">ความกล้าหาญ (Brave)</option>
+          <option value="smart" class="bg-slate-900 text-slate-200">
+            ความฉลาดหลักแหลม (Smart)
+          </option>
+          <option value="loyal" class="bg-slate-900 text-slate-200">ความซื่อสัตย์ (Loyal)</option>
+          <option value="cunning" class="bg-slate-900 text-slate-200">
+            ความทะเยอทะยาน (Cunning)
+          </option>
+        </select>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="animalInput" class="font-semibold mb-2 text-amber-500 tracking-wider"
+          >สัตว์ผู้พิทักษ์ที่คุณผูกพัน?</label
+        >
+        <select
+          id="animalInput"
+          [ngModel]="animal()"
+          (ngModelChange)="animal.set($event)"
+          name="animal"
+          class="bg-slate-950/50 border border-amber-500/30 p-4 rounded-xl text-slate-200 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors cursor-pointer"
+          required
+        >
+          <option value="" disabled class="text-slate-500">-- โปรดเลือกสัตว์วิเศษ --</option>
+          <option value="lion" class="bg-slate-900 text-slate-200">สิงโต (Lion)</option>
+          <option value="eagle" class="bg-slate-900 text-slate-200">นกอินทรี (Eagle)</option>
+          <option value="badger" class="bg-slate-900 text-slate-200">ตัวแบดเจอร์ (Badger)</option>
+          <option value="snake" class="bg-slate-900 text-slate-200">งู (Snake)</option>
+        </select>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full mt-8 bg-gradient-to-r from-amber-600 to-amber-400 text-slate-900 font-black text-lg py-4 px-6 rounded-xl hover:shadow-[0_0_25px_rgba(251,191,36,0.6)] hover:scale-[1.02] transition-all duration-300 uppercase tracking-widest"
+        style="font-family: 'Cinzel', serif"
+      >
+        สวมหมวกคัดสรร!
+      </button>
+    </form>
+  } @else {
+    <div class="text-center space-y-8 py-10 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
+      <h3 class="text-2xl font-light tracking-wide">
+        ยินดีต้อนรับสู่ฮอกวอตส์, <br /><span
+          class="font-bold text-amber-400 text-4xl mt-4 block"
+          style="font-family: 'Cinzel', serif"
+          >{{ userName() }}</span
+        >!
+      </h3>
+      <div
+        class="w-24 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto my-6"
+      ></div>
+      <p class="text-slate-300 text-lg tracking-widest">
+        หมวกคัดสรรได้ตัดสินใจแล้วว่า...<br />บ้านของคุณคือ!!
+      </p>
+
+      <div class="relative py-8">
+        <div class="absolute inset-0 bg-amber-500/10 blur-2xl rounded-full"></div>
+        <h1
+          class="relative text-6xl md:text-7xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-b from-amber-200 to-amber-600 drop-shadow-[0_0_20px_rgba(251,191,36,0.8)]"
+          style="font-family: 'Cinzel', serif"
+        >
+          {{ sortedHouse() }}
+        </h1>
+      </div>
+
+      <button
+        (click)="resetForm()"
+        class="mt-8 bg-slate-800/80 border border-slate-600 text-slate-300 font-medium px-8 py-3 rounded-full hover:bg-slate-700 hover:text-white transition-colors"
+      >
+        กลับไปทำแบบทดสอบใหม่
+      </button>
+    </div>
+  }
+</div>

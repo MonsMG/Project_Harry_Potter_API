@@ -1,0 +1,42 @@
+/* 1. นำเข้าฟอนต์เวทมนตร์จาก Google Fonts (ห้ามลืมบรรทัดนี้เด็ดขาด!) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&display=swap');
+
+/* SCSS Variables */
+$color-gold: #e9c46a;
+$color-bg-deep: #0f172a;
+
+.site-header {
+  @apply relative py-12 px-4 text-center overflow-hidden;
+
+  /* ทำให้พื้นหลังกลืนไปกับสีของเว็บด้านล่าง ไม่ดูเป็นก้อนตัดฉับ */
+  background: linear-gradient(to bottom, $color-bg-deep 0%, transparent 100%);
+
+  .header-content {
+    @apply relative flex flex-col items-center justify-center gap-4;
+  }
+
+  /* ปรับแสง Lumos ให้ฟุ้งตรงกลางพอดี ไม่สว่างจนกวนสายตา */
+  .lumos-glow {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[150px] blur-[60px] opacity-30;
+    background: $color-gold;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+  }
+
+  /* Typography ที่ขลังและดูแพง */
+  .site-title {
+    @apply relative z-10 text-4xl md:text-6xl font-black m-0 tracking-[0.1em];
+    font-family: 'Cinzel Decorative', serif;
+    color: $color-gold;
+    /* แสงเงาเรืองแสงรอบตัวหนังสือ */
+    text-shadow: 0 0 15px rgba(233, 196, 106, 0.5);
+  }
+
+  /* เส้นคั่นไม้กายสิทธิ์ */
+  .artifact-divider {
+    @apply relative z-10 w-32 h-px opacity-70;
+    background: linear-gradient(90deg, transparent, $color-gold, transparent);
+    box-shadow: 0 0 10px rgba(233, 196, 106, 0.8);
+  }
+}

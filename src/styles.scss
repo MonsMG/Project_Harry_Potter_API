@@ -1,1 +1,139 @@
-/* You can add global styles to this file, and also import other style files */
+/* ✨ Magical Artifact Design System — Global Base Layer */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;500;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* 🌙 พื้นหลังแห่งค่ำคืน — ใช้ Deep Slate ไม่ใช้ดำสนิท */
+  body {
+    @apply m-0 p-0 min-h-screen;
+    font-family: 'Crimson Pro', serif;
+    font-size: 18px;
+    line-height: 1.75;
+    color: #e2e8f0; /* สีครีมกระดาษเก่า ไม่ใช่ขาวจ้า */
+    background-color: #0f172a; /* Deep Slate — ไม่ใช้ #000 */
+    background-image: url('/pictures/hogwarts-legacy-4k-wallpapers.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    /* ม่านเวทมนตร์ปิดทับภาพ ให้อ่านตัวหนังสือชัด */
+    &::before {
+      content: '';
+      @apply fixed inset-0 -z-10;
+      background: linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.85) 0%,
+        rgba(15, 23, 42, 0.75) 50%,
+        rgba(15, 23, 42, 0.9) 100%
+      );
+      backdrop-filter: blur(3px);
+    }
+  }
+
+  /* 📜 Typography is King — ห้ามใช้ Sans-serif ในหัวข้อ */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Cinzel', serif;
+    @apply tracking-wider leading-tight;
+    color: #e9c46a; /* Antique Gold */
+  }
+
+  /* ลิงก์ทั่วไปเป็นสีทองอ่อน */
+  a {
+    color: #e9c46a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    &:hover {
+      color: #f4a261;
+    }
+  }
+
+  /* Custom scrollbar สไตล์เวทมนตร์ */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(233, 196, 106, 0.3);
+    border-radius: 4px;
+    &:hover {
+      background: rgba(233, 196, 106, 0.5);
+    }
+  }
+
+  /* Selection highlight สีทอง */
+  ::selection {
+    background: rgba(233, 196, 106, 0.3);
+    color: #fefce8;
+  }
+}
+// ตัวแปรสีหลัก (อ้างอิงจาก styles.scss)
+$color-gold: #e9c46a;
+$color-bg-deep: #0f172a; // Deep Slate
+
+.magical-header {
+  @apply pt-12 pb-6 px-4 text-center overflow-hidden;
+  .header-content {
+    @apply relative flex flex-col items-center justify-center gap-4 z-10;
+  }
+  .lumos-glow {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[150px] blur-[60px] opacity-30 rounded-full;
+    background: $color-gold;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .site-title {
+    @apply text-4xl md:text-6xl font-black m-0 tracking-[0.1em];
+    font-family: 'Cinzel Decorative', serif;
+    color: $color-gold;
+    text-shadow: 0 0 15px rgba(233, 196, 106, 0.5);
+  }
+  .artifact-divider {
+    @apply w-32 h-px opacity-70;
+    background: linear-gradient(90deg, transparent, $color-gold, transparent);
+    box-shadow: 0 0 10px rgba(233, 196, 106, 0.8);
+  }
+}
+
+.magical-nav {
+  @apply py-6 flex justify-center sticky top-0 z-50 backdrop-blur-sm bg-slate-950/40 border-b border-amber-500/10;
+
+  .nav-button-group {
+    @apply flex items-center m-0 p-0 list-none;
+    gap: 2rem; // 🎯 เว้นระยะห่างปุ่ม 2rem ตามคำขอ
+
+    li {
+      .btn-nav {
+        // 🎯 สไตล์กลุ่มปุ่มกด (Buttons Group)
+        @apply px-6 py-2.5 rounded-full border border-amber-500/20 text-slate-400 font-bold tracking-wider uppercase transition-all duration-300;
+        font-family: 'Cinzel', serif;
+        font-size: 13px;
+
+        &:hover {
+          @apply text-amber-300 border-amber-500/60 bg-amber-950/20 shadow-[0_0_15px_rgba(251,191,36,0.1)];
+        }
+
+        &.active {
+          @apply text-slate-950 bg-gradient-to-r from-amber-300 to-amber-500 border-transparent shadow-[0_0_20px_rgba(251,191,36,0.6)];
+        }
+      }
+    }
+  }
+}
+
+.magical-content-cover {
+  /* 🎯 ม่านสีดำจางๆ ครอบเนื้อหาทั้งหมด สไตล์ Behance */
+  @apply container mx-auto p-6 md:p-12 my-8 rounded-3xl min-h-[60vh] border border-slate-800/60 shadow-2xl;
+  background-color: rgba($color-bg-deep, 0.85); // มืดจางๆ 85% เพื่อให้อ่านตัวหนังสือชัด
+  backdrop-filter: blur(5px);
+}

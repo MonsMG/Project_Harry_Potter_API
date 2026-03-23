@@ -1,0 +1,27 @@
+/* 🏰 Houses List Page — Artifact Container with Lumos Glow */
+
+$color-gold: #e9c46a;
+$font-title-deco: 'Cinzel Decorative', serif;
+
+:host {
+  display: block;
+}
+
+/* จัดกึ่งกลางอย่างมีชั้นเชิง มี Padding เยอะพอ */
+:host > div {
+  @apply max-w-6xl mx-auto p-8 md:p-12;
+}
+
+/* หัวข้อหน้า — ใช้ Cinzel Decorative สีทองเก่าเรืองแสง */
+h2 {
+  font-family: $font-title-deco;
+  color: $color-gold;
+  text-shadow: 0 0 15px rgba($color-gold, 0.4);
+}
+
+/* เส้นคั่น Artifact Divider */
+.artifact-divider {
+  @apply w-48 h-px mx-auto mt-6 opacity-50;
+  background: linear-gradient(90deg, transparent, $color-gold, transparent);
+  box-shadow: 0 0 10px rgba($color-gold, 0.7);
+}

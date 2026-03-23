@@ -1,11 +1,29 @@
-<nav>
-  <a routerLink="/">Home</a>
-  <a routerLink="/characters">Characters</a>
-  <a routerLink="/houses">Houses</a>
-  <a routerLink="/spells">Spells</a>
-  <a routerLink="/sorting-hat">Sorting Hat</a>
+<header class="magical-header">
+  <div class="header-content">
+    <div class="lumos-glow"></div>
+    <h1 class="site-title">{{ title() }}</h1>
+    <div class="artifact-divider"></div>
+  </div>
+</header>
+
+<nav class="magical-nav">
+  <ul class="nav-button-group">
+    <li>
+      <a
+        routerLink="/"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+        class="btn-nav"
+        >Home</a
+      >
+    </li>
+    <li><a routerLink="/characters" routerLinkActive="active" class="btn-nav">Characters</a></li>
+    <li><a routerLink="/houses" routerLinkActive="active" class="btn-nav">Houses</a></li>
+    <li><a routerLink="/spells" routerLinkActive="active" class="btn-nav">Spells</a></li>
+    <li><a routerLink="/sorting-hat" routerLinkActive="active" class="btn-nav">Sorting Hat</a></li>
+  </ul>
 </nav>
 
-<main>
+<main class="magical-content-cover">
   <router-outlet></router-outlet>
 </main>

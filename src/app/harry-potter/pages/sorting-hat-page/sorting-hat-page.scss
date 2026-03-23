@@ -1,0 +1,52 @@
+/* 🎩 Sorting Hat Page — Artifact Wrapper */
+
+$color-gold: #e9c46a;
+$font-title: 'Cinzel', serif;
+$font-body: 'Crimson Pro', serif;
+
+:host {
+  display: block;
+}
+
+/* จัด Container ให้อยู่กึ่งกลาง มี padding สูดลมหายใจ */
+:host > div {
+  @apply relative mx-auto rounded-3xl overflow-hidden border;
+  max-width: 42rem;
+  padding: 3rem;
+  background-color: #111827;
+  background-image: radial-gradient(circle at center, #1e293b 0%, #111827 100%);
+  border-color: rgba($color-gold, 0.15);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* ฟอร์ม label ต้องเป็นสีทองเก่า */
+label {
+  font-family: $font-title;
+  color: rgba($color-gold, 0.85);
+  letter-spacing: 0.05em;
+}
+
+/* Input/Select — ขอบสีทองจาง พื้นหลังเข้ม */
+input,
+select {
+  font-family: $font-body;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ปุ่ม submit — สีทองเก่าเป็นข้อความบนพื้นมืด */
+button[type='submit'] {
+  font-family: $font-title;
+}
+
+/* ส่วนแสดงผลลัพธ์ — animation fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

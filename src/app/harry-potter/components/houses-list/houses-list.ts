@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-houses-list',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './houses-list.html',
   styleUrl: './houses-list.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HousesList {}

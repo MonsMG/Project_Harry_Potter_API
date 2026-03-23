@@ -1,0 +1,73 @@
+/* 🛡️ Houses View Page — Artifact Styling */
+
+$color-gold: #e9c46a;
+$font-title: 'Cinzel', serif;
+$font-title-deco: 'Cinzel Decorative', serif;
+$font-body: 'Crimson Pro', serif;
+
+.magical-page-container {
+  @apply flex items-start justify-center min-h-[60vh] p-6 md:p-12;
+
+  .artifact-card {
+    @apply relative w-full max-w-6xl rounded-3xl overflow-hidden border;
+    background-color: #111827;
+    background-image: radial-gradient(circle at center, #1e293b 0%, #111827 100%);
+    border-color: rgba($color-gold, 0.15);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+
+    .lumos-glow {
+      @apply absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-32 blur-[100px] opacity-20;
+      background: radial-gradient(circle, $color-gold 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .content-body {
+      @apply relative z-10 p-10 md:p-16 flex flex-col gap-10;
+
+      .page-header {
+        @apply flex flex-col items-center gap-6 text-center;
+
+        .back-link {
+          @apply self-start px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest transition-all duration-300;
+          font-family: $font-title;
+          color: rgba($color-gold, 0.7);
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba($color-gold, 0.2);
+
+          &:hover {
+            color: $color-gold;
+            border-color: rgba($color-gold, 0.5);
+            box-shadow: 0 0 20px rgba($color-gold, 0.15);
+            transform: translateY(-2px);
+          }
+        }
+
+        .artifact-title {
+          @apply text-4xl md:text-6xl font-bold tracking-widest m-0;
+          font-family: $font-title-deco;
+          color: $color-gold;
+          text-shadow: 0 0 15px rgba($color-gold, 0.4);
+        }
+
+        .artifact-divider {
+          @apply w-48 h-px opacity-50;
+          background: linear-gradient(90deg, transparent, $color-gold, transparent);
+          box-shadow: 0 0 10px rgba($color-gold, 0.7);
+        }
+      }
+
+      .loading-state {
+        @apply text-center py-20 text-2xl tracking-widest animate-pulse;
+        color: rgba($color-gold, 0.7);
+        font-family: $font-title;
+        text-shadow: 0 0 8px rgba($color-gold, 0.4);
+      }
+
+      .error-state {
+        @apply text-center py-20 text-xl;
+        color: #e57373;
+        font-family: $font-body;
+      }
+    }
+  }
+}

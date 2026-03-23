@@ -1,0 +1,105 @@
+/* นำเข้าฟอนต์เวทมนตร์หลัก */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=Crimson+Pro:italic,wght@0,400;1,400&display=swap');
+
+// ฟอนต์สำหรับหัวข้อ: Cinzel (Trajan style)
+$font-title: 'Cinzel', serif;
+// ฟอนต์สำหรับหัวข้อตกแต่งพิเศษ: Cinzel Decorative
+$font-title-deco: 'Cinzel Decorative', serif;
+// ฟอนต์สำหรับเนื้อหา/คำคม: Crimson Pro (Serif อ่านง่าย)
+$font-body: 'Crimson Pro', serif;
+
+// สีทองเก่า (Antique Gold)
+$color-gold: #e9c46a;
+// สีทองสว่างสำหรับ Hover
+$color-gold-light: #f4a261;
+// สีพื้นหลัง (Dark Slate)
+$color-bg: #0f172a;
+// สีตัวหนังสือครีมจางๆ
+$color-text: #e2e8f0;
+
+.magical-page-container {
+  /* สเตปที่ 1: Spacing ขั้นเทพ - จัดกึ่งกลางหน้าจอและเพิ่มระยะห่าง */
+  @apply flex items-center justify-center min-h-[80vh] p-6 md:p-12;
+
+  .artifact-card {
+    /* สเตปที่ 2: Tactile Details - สร้างมิติและพื้นผิว */
+    @apply relative w-full max-w-4xl rounded-3xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)] border;
+    background-color: #111827; // สีเข้มกว่าพื้นหลังนิดหน่อย
+    background-image: radial-gradient(circle at center, #1e293b 0%, #111827 100%);
+    border-color: rgba($color-gold, 0.2);
+
+    /* สเตปที่ 2: Tactile Details - แสงเรืองแสงเวทมนตร์ (Lumos Glow) */
+    .lumos-glow {
+      @apply absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-40 blur-[100px] opacity-30;
+      background: radial-gradient(circle, $color-gold 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .content-body {
+      /* สเตปที่ 1: Spacing ขั้นเทพ - padding ภายในContainer ต้องเยอะพอ */
+      @apply relative z-10 p-12 md:p-20 text-center flex flex-col items-center gap-10;
+
+      .artifact-title {
+        /* สเตปที่ 3: Typography - ใช้ฟอนต์ตรงตีมและสีทองเก่า */
+        @apply text-5xl md:text-7xl font-bold m-0 tracking-wider;
+        font-family: $font-title-deco;
+        color: $color-gold;
+        text-shadow: 0 0 15px rgba($color-gold, 0.5);
+      }
+
+      .artifact-divider {
+        /* สเตปที่ 2: Tactile Details - เส้นคั่นเรืองแสง */
+        @apply w-48 h-px opacity-50;
+        background: linear-gradient(90deg, transparent, $color-gold, transparent);
+        box-shadow: 0 0 10px rgba($color-gold, 0.8);
+      }
+
+      .artifact-quote {
+        /* สเตปที่ 3: Typography - คำคมใช้ฟอนต์ Serif ที่อ่านง่ายและสีครีม */
+        @apply m-0 text-xl md:text-2xl italic leading-relaxed text-slate-300 max-w-2xl;
+        font-family: $font-body;
+
+        cite {
+          @apply block text-base mt-4 font-normal not-italic text-slate-500 uppercase tracking-widest;
+        }
+      }
+
+      .artifact-actions {
+        /* สเตปที่ 1: Spacing ขั้นเทพ - ระยะห่างระหว่างปุ่มพอดี */
+        @apply flex flex-col sm:flex-row gap-6 mt-6;
+
+        /* ปุ่มหลัก: เรืองแสงสีทอง */
+        .btn-magical-primary {
+          @apply flex items-center gap-3 px-10 py-4 font-bold rounded-full transition-all duration-300;
+          background-color: #1a1a1a;
+          color: $color-gold;
+          border: 1px solid rgba($color-gold, 0.4);
+          box-shadow: 0 0 15px rgba($color-gold, 0.1);
+          font-family: $font-title;
+
+          .icon {
+            @apply text-2xl;
+          }
+
+          &:hover {
+            @apply shadow-[0_0_25px_rgba(233,196,106,0.3)] -translate-y-1;
+            background-color: #222;
+            border-color: rgba($color-gold, 0.6);
+          }
+        }
+
+        /* ปุ่มรอง: เรียบหรู */
+        .btn-magical-secondary {
+          @apply px-10 py-4 bg-transparent text-slate-400 font-bold rounded-full transition-all duration-300;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          font-family: $font-title;
+
+          &:hover {
+            @apply text-white border-white/20 -translate-y-1;
+            background-color: rgba(255, 255, 255, 0.05);
+          }
+        }
+      }
+    }
+  }
+}

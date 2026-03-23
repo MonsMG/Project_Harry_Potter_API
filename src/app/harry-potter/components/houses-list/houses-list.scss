@@ -1,0 +1,34 @@
+$color-gold: #e9c46a;
+
+.houses-grid-container {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8;
+}
+
+.house-card {
+  // 🎯 สไตล์การ์ดหลัก: เรียบหรู พื้นหลังเข้ม ขอบทองจางๆ
+  @apply flex flex-col items-center p-10 rounded-2xl transition-all duration-400 border border-amber-500/30 bg-slate-950/50 shadow-xl;
+  text-decoration: none;
+
+  .house-emblem {
+    @apply h-40 object-contain mb-8 transition-transform duration-400 filter grayscale-[20%];
+  }
+
+  .house-title {
+    @apply m-0 text-center text-3xl font-extrabold uppercase tracking-widest transition-colors duration-400;
+    color: #cbd5e1; // สี slate-300
+    font-family: 'Cinzel Decorative', serif;
+  }
+
+  // ✨ เอฟเฟกต์เวลา Hover: การ์ดนูนขึ้น ขอบสว่างขึ้น และสีทองเรืองแสง
+  &:hover {
+    @apply border-amber-500/50 -translate-y-3 bg-slate-900 shadow-[0_15px_40px_rgba(217,119,6,0.15)];
+
+    .house-emblem {
+      @apply transform scale-110 filter grayscale-0 drop-shadow-[0_0_15px_rgba(251,191,36,0.4)];
+    }
+    .house-title {
+      color: $color-gold;
+      text-shadow: 0 0 10px rgba($color-gold, 0.6);
+    }
+  }
+}

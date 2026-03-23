@@ -1,0 +1,68 @@
+/* 🧙‍♂️ Character Cards — Magical Artifact Style */
+
+$color-gold: #e9c46a;
+$font-title: 'Cinzel', serif;
+$font-body: 'Crimson Pro', serif;
+
+.character-grid {
+  @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6;
+
+  .character-card {
+    @apply relative rounded-2xl overflow-hidden cursor-default transition-all duration-400;
+    background-color: #111827;
+    border: 1px solid rgba($color-gold, 0.1);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba($color-gold, 0.3);
+      box-shadow:
+        0 20px 40px -10px rgba(0, 0, 0, 0.6),
+        0 0 25px rgba($color-gold, 0.1);
+    }
+
+    .card-image-wrapper {
+      @apply relative w-full overflow-hidden;
+      aspect-ratio: 3 / 4;
+
+      .card-image {
+        @apply w-full h-full object-cover transition-transform duration-500;
+      }
+
+      /* แสงเฟดด้านล่างภาพ ไล่มาเป็นสีพื้นหลังการ์ด */
+      .image-fade {
+        @apply absolute bottom-0 left-0 right-0 h-1/3;
+        background: linear-gradient(to top, #111827 0%, transparent 100%);
+        pointer-events: none;
+      }
+    }
+
+    &:hover .card-image {
+      transform: scale(1.08);
+    }
+
+    .card-info {
+      @apply relative px-5 pb-5 -mt-4 text-center;
+      z-index: 2;
+
+      .char-name {
+        @apply text-base md:text-lg font-bold m-0 truncate tracking-wide;
+        font-family: $font-title;
+        color: $color-gold;
+        text-shadow: 0 0 6px rgba($color-gold, 0.3);
+      }
+
+      .char-actor {
+        @apply text-xs mt-1.5 truncate m-0;
+        font-family: $font-body;
+        color: #94a3b8; /* Slate 400 — ไม่เข้มเกิน ไม่อ่อนเกิน */
+      }
+    }
+  }
+
+  .empty-state {
+    @apply col-span-full text-center py-16 text-xl tracking-widest;
+    font-family: $font-title;
+    color: rgba($color-gold, 0.5);
+  }
+}

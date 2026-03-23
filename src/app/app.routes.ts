@@ -10,23 +10,19 @@ import { SpellsViewPage } from './harry-potter/pages/spells-view-page/spells-vie
 import { SortingHatPage } from './harry-potter/pages/sorting-hat-page/sorting-hat-page';
 
 export const routes: Routes = [
-    {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-    },
-    {
-        path: 'home',
-        component: HarryPotterRoot,
-        children: [
-            { path: '', component: HomePage },
-            { path: 'characters', component: CharactersListPage },
-            { path: 'characters/:id', component: CharacterViewPage },
-            { path: 'houses', component: HousesListPage },
-            { path: 'houses/:house', component: HousesViewPage },
-            { path: 'spells', component: SpellsListPage },
-            { path: 'spells/:id', component: SpellsViewPage },
-            { path: 'sorting-hat', component: SortingHatPage },
-        ],
-    }
+  {
+    path: '',
+    component: HarryPotterRoot,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomePage },
+      { path: 'characters', component: CharactersListPage },
+      { path: 'characters/:id', component: CharacterViewPage },
+      { path: 'houses', component: HousesListPage },
+      { path: 'houses/:house', component: HousesViewPage },
+      { path: 'spells', component: SpellsListPage },
+      { path: 'spells/:id', component: SpellsViewPage },
+      { path: 'sorting-hat', component: SortingHatPage },
+    ],
+  },
 ];

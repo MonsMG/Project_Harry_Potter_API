@@ -1,1 +1,24 @@
-<p>houses-view-page works!</p>
+<!-- หน้ารายละเอียดตัวละครประจำบ้าน (Houses View Page) -->
+<div class="magical-page-container">
+  <section class="artifact-card">
+    <div class="lumos-glow"></div>
+
+    <div class="content-body">
+      <!-- ปุ่มกลับ + ชื่อบ้าน -->
+      <div class="page-header">
+        <a routerLink="/houses" class="back-link">← กลับหน้าเลือกบ้าน</a>
+        <h2 class="artifact-title">🛡️ บ้าน {{ houseName }}</h2>
+        <div class="artifact-divider"></div>
+      </div>
+
+      <!-- สถานะการโหลดข้อมูล -->
+      @if (charactersData.isLoading()) {
+        <div class="loading-state">🪄 กำลังร่ายมนตร์ดึงข้อมูล...</div>
+      } @else if (charactersData.error()) {
+        <div class="error-state">⚠️ เกิดข้อผิดพลาดในการโหลดข้อมูล</div>
+      } @else {
+        <app-houses-view [characters]="charactersData.value() ?? []"></app-houses-view>
+      }
+    </div>
+  </section>
+</div>
