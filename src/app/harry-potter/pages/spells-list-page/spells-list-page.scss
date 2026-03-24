@@ -1,0 +1,122 @@
+// Variables (Optional, but good practice to keep here if not in global)
+$color-gold: #e9c46a;
+$color-gold-glow: rgba(233, 196, 106, 0.3);
+$font-title: 'Cinzel', serif;
+$font-body: 'Crimson Pro', serif;
+
+.spells-list-container {
+  @apply max-w-7xl mx-auto p-6 md:p-12 min-h-screen;
+  font-family: $font-body;
+
+  /* Header Section */
+  .page-header {
+    @apply text-center mb-16 relative flex flex-col items-center;
+
+    .lumos-glow {
+      @apply absolute w-72 h-72 rounded-full blur-[120px] -z-10 opacity-30;
+      background: radial-gradient(circle, $color-gold 0%, transparent 70%);
+      top: -50px;
+    }
+
+    .title {
+      @apply text-4xl md:text-5xl font-bold tracking-widest pb-2;
+      font-family: $font-title;
+      color: $color-gold;
+      text-shadow: 0 0 15px rgba($color-gold, 0.5);
+    }
+
+    .subtitle {
+      @apply text-slate-400 mt-2 text-base md:text-lg opacity-80;
+    }
+
+    .artifact-divider {
+      @apply w-56 h-px opacity-60 my-5;
+      background: linear-gradient(90deg, transparent, $color-gold, transparent);
+    }
+
+    .search-wrapper {
+      @apply mt-8 w-full max-w-lg relative;
+
+      .search-input {
+        @apply w-full bg-slate-900/60 border rounded-2xl p-4 pl-12
+               text-slate-100 placeholder-slate-500 text-lg
+               transition-all duration-300;
+        border-color: rgba($color-gold, 0.2);
+        backdrop-filter: blur(10px);
+
+        &:focus {
+          @apply outline-none ring-2;
+          border-color: rgba($color-gold, 0.6);
+          box-shadow: 0 0 25px rgba($color-gold, 0.15);
+          --tw-ring-color: rgba(233, 196, 106, 0.3);
+        }
+      }
+    }
+  }
+
+  /* Magical Spell Card (Mini) */
+  .spell-card-mini {
+    @apply relative rounded-2xl border transition-all duration-500 cursor-pointer 
+           flex items-center justify-center p-6 text-center overflow-hidden min-h-[120px];
+    background: rgba(15, 23, 42, 0.8); // slate-900 with alpha
+    border-color: rgba($color-gold, 0.15);
+    backdrop-filter: blur(8px);
+
+    // Glow Effect background on hover
+    .card-bg-glow {
+      @apply absolute inset-0 opacity-0 transition-opacity duration-500 -z-10 blur-xl;
+      background: radial-gradient(circle at center, rgba($color-gold, 0.1) 0%, transparent 70%);
+    }
+
+    .card-content {
+      @apply relative flex flex-col items-center;
+
+      .sparkle {
+        @apply text-amber-300 text-sm mb-2 transition-all duration-300;
+        text-shadow: 0 0 10px $color-gold;
+      }
+
+      .spell-name {
+        font-family: $font-title;
+        color: $color-gold;
+        @apply text-xl font-semibold tracking-wide m-0 transition-colors duration-300;
+      }
+    }
+
+    // Hover States
+    &:hover {
+      @apply -translate-y-2;
+      border-color: rgba($color-gold, 0.6);
+      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px $color-gold-glow;
+
+      .card-bg-glow { @apply opacity-100; }
+      
+      .card-content .spell-name {
+        @apply text-amber-200;
+        text-shadow: 0 0 15px rgba($color-gold, 0.8);
+      }
+    }
+  }
+
+  /* Status Messages */
+  .status-container {
+    @apply text-center text-slate-400 py-24 flex flex-col items-center justify-center;
+
+    .magic-icon {
+      @apply text-6xl mb-6;
+    }
+    
+    p {
+      @apply text-2xl font-medium;
+      font-family: $font-title;
+      color: rgba($color-gold, 0.8);
+    }
+
+    &.error {
+      p { @apply text-red-400; }
+    }
+    &.empty {
+      p { @apply text-slate-500; }
+    }
+  }
+}

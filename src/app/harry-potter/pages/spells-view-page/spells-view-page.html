@@ -1,1 +1,25 @@
-<p>spells-view-page works!</p>
+<div class="magical-page-container">
+  <section class="artifact-card">
+    <div class="lumos-glow"></div>
+    <div class="content-body">
+      
+      <div class="page-header">
+        <a routerLink="/spells" class="back-link">← กลับหน้าคาถา</a>
+        <div class="artifact-divider"></div>
+      </div>
+
+      @if (spellData.isLoading()) {
+        <div class="loading-state">🪄 กำลังร่ายมนตร์...</div>
+      } @else if (spellData.error()) {
+        <div class="error-state">⚠️ ไม่พบข้อมูลคาถานี้</div>
+      } @else {
+        <div class="spell-detail">
+          <span class="spell-icon">🪄</span>
+          <h1 class="spell-name">{{ spellData.value()?.name }}</h1>
+          <div class="spell-divider"></div>
+          <p class="spell-description">{{ spellData.value()?.description }}</p>
+        </div>
+      }
+    </div>
+  </section>
+</div>

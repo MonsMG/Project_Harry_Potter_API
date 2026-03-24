@@ -38,3 +38,13 @@ export async function fetchAllSpells(): Promise<Spell[]> {
   if (!response.ok) throw new Error('Failed to fetch spells');
   return response.json();
 }
+
+// 6. ดึงข้อมูลคาถาแบบเจาะจงรายตัว
+export async function fetchSpellById(id: string): Promise<Spell> {
+  const response = await fetch(`${API_BASE_URL}/spells`);
+  if (!response.ok) throw new Error('Failed to fetch spells');
+  const spells: Spell[] = await response.json();
+  const spell = spells.find(s => s.id === id);
+  if (!spell) throw new Error(`Spell not found: ${id}`);
+  return spell;
+}

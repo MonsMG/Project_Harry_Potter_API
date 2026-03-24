@@ -3,7 +3,10 @@
   "version": 1,
   "cli": {
     "packageManager": "yarn",
-    "schematicCollections": ["angular-eslint"]
+    "schematicCollections": [
+      "angular-eslint"
+    ],
+    "analytics": "4678ee2a-0aed-42d0-bfa7-489efa65118f"
   },
   "newProjectRoot": "projects",
   "projects": {

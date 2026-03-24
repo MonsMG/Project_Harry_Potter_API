@@ -1,1 +1,13 @@
-<p>spells-list-page works!</p>
+<div class="spells-list-container">
+  <div class="page-header">
+    <h2 class="title">✨ คาถาทั้งหมด</h2>
+    <input type="text" [ngModel]="searchQuery()" (ngModelChange)="searchQuery.set($event)" 
+           placeholder="🔍 ค้นหาชื่อคาถา..." class="search-input" />
+  </div>
+
+  @if (spellsData.isLoading()) {
+    <div class="status">🪄 กำลังร่ายมนตร์...</div>
+  } @else {
+    <app-spells-view [spells]="filteredSpells()" />
+  }
+</div>

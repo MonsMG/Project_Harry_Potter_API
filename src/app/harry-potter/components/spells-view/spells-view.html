@@ -1,1 +1,13 @@
-<p>spells-view works!</p>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  @for (spell of spells(); track spell.id) {
+    <a [routerLink]="['/spells', spell.id]" class="spell-card-mini group">
+      <div class="card-bg-glow"></div>
+      <div class="card-content">
+        <span class="sparkle opacity-0 group-hover:opacity-100">✦</span>
+        <h3 class="spell-name">{{ spell.name }}</h3>
+      </div>
+    </a>
+  } @empty {
+    <div class="col-span-full text-center py-10">ไม่พบคาถาที่ค้นหา 🔮</div>
+  }
+</div>

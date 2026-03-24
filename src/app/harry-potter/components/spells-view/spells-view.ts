@@ -1,10 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Spell } from '../../types/api';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-spells-view',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './spells-view.html',
   styleUrl: './spells-view.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpellsView {}
+export class SpellsViewComponent {
+  // รับข้อมูล List ของคาถามาจาก Page ด้วย Signal
+  spells = input.required<Spell[]>();
+}
