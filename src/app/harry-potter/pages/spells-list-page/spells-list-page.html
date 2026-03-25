@@ -10,13 +10,17 @@
     />
   </div>
 
+  <!-- หากข้อมูลกำลังถูกดึงจาก API อยู่ ให้แสดงสถานะโหลด -->
   @if (spellsData.isLoading()) {
     <div class="status">🪄 กำลังร่ายมนตร์...</div>
   } @else {
+    <!-- ส่งข้อมูลสำหรับแสดงผลไปยัง Component ย่อย (สับเอาเฉพาะส่วนแรกตามหน้าปัจจุบันมาแล้ว) -->
     <app-spells-view [spells]="paginatedSpells()" />
 
+    <!-- ถ้ามีจำนวนหน้ามากกว่า 1 หน้า ค่อยแสดงปุ่มเปลี่ยนหน้า -->
     @if (totalPages() > 1) {
       <div class="pagination-controls">
+        <!-- ปุ่มกดเพื่อย้อนไปหน้าก่อนหน้านี้ (จะปิดการใช้งานถ้าอยู่หน้า 1) -->
         <button
           (click)="goToPage(currentPage() - 1)"
           [disabled]="currentPage() === 1"

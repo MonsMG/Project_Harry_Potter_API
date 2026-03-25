@@ -8,4 +8,5 @@ import { HousesList } from '../../components/houses-list/houses-list'; // นำ
   styleUrl: './houses-list-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+// 🎯 หน้าแสดงรายชื่อบ้านทั้งหมด (ไม่มี Logic ซับซ้อนเพราะโยกไปไว้ใน Component ลูกหมดแล้ว)
 export class HousesListPage {}

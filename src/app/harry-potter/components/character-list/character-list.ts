@@ -10,5 +10,6 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharacterList {
+  // รับข้อมูลตัวละคร (characters) จาก Component แม่ เพื่อนำมาแสดงผลด้วย input.required()
   readonly characters = input.required<Character[]>();
 }

@@ -5,6 +5,7 @@
     <p class="sorting-hat-subtitle">Sorting Hat Ceremony</p>
   </div>
 
+  <!-- ตรวจสอบว่าถ้ายังไม่ได้ผลลัพธ์บ้าน จะให้แสดงแบบฟอร์มคำถาม -->
   @if (!sortedHouse()) {
     <form (submit)="sortHouse(); $event.preventDefault()" class="sorting-form">
       <div class="form-group">
@@ -62,6 +63,7 @@
       </button>
     </form>
   } @else {
+    <!-- แต่ถ้าคัดสรรได้บ้านแล้ว จะมาแสดงผลลัพธ์ด้านล่างนี้เลย -->
     <div class="result-section">
       <h3 class="welcome-text">
         ยินดีต้อนรับสู่ฮอกวอตส์, <br /><span class="user-name">{{ userName() }}</span>!
@@ -78,11 +80,13 @@
 
       <div class="members-section custom-scrollbar">
         <h4 class="members-title">เพื่อนร่วมบ้านของคุณ</h4>
+        <!-- ดึงรายชื่อตัวละครในบ้านนั้นแบบคร่าวๆ มาแสดง โดยเช็คสถานะการโหลด -->
         @if (houseMembersData.isLoading()) {
           <div class="members-loading">🪄 กำลังรวบรวมรายชื่อ...</div>
         } @else if (houseMembersData.error()) {
           <div class="members-error">⚠️ ไม่สามารถดึงรายชื่อได้</div>
         } @else {
+          <!-- ใช้ Component ลูกเพื่อประหยัดเนื้อที่โค้ด -->
           <app-houses-view [characters]="houseMembersData.value() ?? []"></app-houses-view>
         }
       </div>

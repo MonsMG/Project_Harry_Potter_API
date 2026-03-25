@@ -8,5 +8,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './houses-list.html',
   styleUrl: './houses-list.scss',
 })
+// Component ย่อย (ลูก) สำหรับแสดงรายชื่อบ้านทั้ง 4 หลังเป็นรูปแบบการ์ด
 export class HousesList {
 }

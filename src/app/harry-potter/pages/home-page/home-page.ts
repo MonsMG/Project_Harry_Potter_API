@@ -8,4 +8,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+// 🎯 หน้าแรกของเว็บไซต์ (Home Page)
 export class HomePage {}

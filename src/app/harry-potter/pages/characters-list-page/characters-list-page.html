@@ -15,6 +15,7 @@
     </div>
   </div>
 
+  <!-- เช็คสถานะการอัปโหลดข้อมูล -->
   @if (charactersData.isLoading()) {
     <div class="loading-state">
       <span>🪄 กำลังร่ายมนตร์ดึงข้อมูล...</span>
@@ -22,11 +23,13 @@
   } @else if (charactersData.error()) {
     <div class="error-state">❌ เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้ง</div>
   } @else {
+    <!-- ส่งข้อมูลตัวละครไปแสดงที่ Component ย่อย (ส่งไปเฉพาะของหน้านั้นๆ ที่หั่นมาแล้ว) -->
     <app-character-list [characters]="paginatedCharacters()"></app-character-list>
 
-    <!-- 🎯 Pagination Controls -->
+    <!-- 🎯 Pagination Controls สำหรับแบ่งหน้า -->
     @if (totalPages() > 1) {
       <div class="pagination-controls">
+        <!-- ปุ่มย้อนกลับ -->
         <button
           (click)="goToPage(currentPage() - 1)"
           [disabled]="currentPage() === 1"

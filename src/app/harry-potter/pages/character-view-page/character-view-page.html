@@ -1,19 +1,24 @@
 <div class="character-view-container">
   <div class="back-button-wrapper">
+    <!-- ปุ่มกดกลับไปหน้าก่อนหน้า -->
     <a tabindex="0" (keydown.enter)="goBack()" (click)="goBack()" class="back-button">
       <span class="icon">←</span> Return to Roster
     </a>
   </div>
 
+  <!-- เช็คสถานะการโหลดข้อมูลของ characterData -->
   @if (characterData.isLoading()) {
+    <!-- กำลังโหลดข้อมูลจาก API -->
     <div class="loading-state">
       Searching the archives...
     </div>
   } @else if (characterData.error() || !characterData.value()) {
+    <!-- โหลดข้อมูลผิดพลาดหรือไม่พบข้อมูล -->
     <div class="error-state">
       Could not locate this wizard's record.
     </div>
   } @else {
+    <!-- โหลดเสร็จสมบูรณ์ ส่งข้อมูลตัวละครไปแสดงใน Component ย่อย -->
     <app-character-view [character]="characterData.value()!"></app-character-view>
   }
 </div>

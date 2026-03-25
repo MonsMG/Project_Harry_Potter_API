@@ -14,14 +14,16 @@ export class SpellsViewPage {
   private route = inject(ActivatedRoute);
   private location = inject(Location);
 
-  spellId = this.route.snapshot.paramMap.get('id') ?? ''; // ดึง ID จาก Route 
+  // ดึงรหัสคาถา (ID) จาก URL ปัจจุบัน เพื่อนำไปดึงข้อมูลคาถานั้นๆ
+  spellId = this.route.snapshot.paramMap.get('id') ?? '';
 
   goBack() {
     this.location.back();
   }
 
+  // จัดการดึงข้อมูลคาถาอัตโนมัติตาม spellId ผ่าน API
   spellData = resource({
-    params: () => this.spellId,
-    loader: async ({ params }) => await fetchSpellById(params),
+    params: () => this.spellId, // กำหนดค่า parameter เป็น ID ของคาถา
+    loader: async ({ params }) => await fetchSpellById(params), // ฟังก์ชันที่จะไปเรียก API เพื่อขอข้อมูล
   });
 }

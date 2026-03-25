@@ -11,26 +11,26 @@ import { HousesView } from '../../components/houses-view/houses-view';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SortingHatPage {
-  // ✨ สร้าง Writable Signals สำหรับเก็บค่าจากแบบฟอร์ม
+  // ✨ สร้างสัญญาณ (Signals) ที่แก้ไขค่าได้ สำหรับเก็บค่าที่ผู้ใช้พิมพ์หรือเลือกในแบบฟอร์ม
   userName = signal<string>('');
   trait = signal<string>('');
   animal = signal<string>('');
 
-  // ✨ Signal สำหรับเก็บผลลัพธ์บ้านที่สุ่มได้
+  // ✨ Signal สำหรับเก็บผลลัพธ์การคัดสรรบ้านที่ได้
   sortedHouse = signal<string>('');
 
-  // 🎯 ดึงข้อมูลศิษย์เก่าของบ้านนั้นๆ จาก API ทันทีที่สุ่มบ้านเสร็จโดยใช้ resource()
+  // 🎯 ดึงข้อมูลเพื่อนร่วมบ้านจาก API อัตโนมัติ ทันทีที่รู้ว่าตัวเองอยู่บ้านไหน (ใช้ resource())
   houseMembersData = resource({
-    params: () => this.sortedHouse(),
+    params: () => this.sortedHouse(), // ส่งชื่อบ้านที่ได้จากการคัดสรร
     loader: async ({ params }) => {
-      if (!params) return [];
-      return await fetchCharactersByHouse(params.toLowerCase());
+      if (!params) return []; // ถ้ายังไม่เริ่ม จะไม่ดึงข้อมูล
+      return await fetchCharactersByHouse(params.toLowerCase()); // เรียก API แยกตามบ้าน
     }
   });
 
-  // ฟังก์ชันคำนวณบ้านเมื่อกด Submit ฟอร์ม
+  // ฟังก์ชันคำนวณและประมวลผลบ้านเมื่อกดส่งแบบฟอร์ม
   sortHouse() {
-    // เช็คว่ากรอกข้อมูลครบไหม
+    // เช็คว่ากรอกข้อมูลครบทุกช่องหรือไม่
     if (!this.userName() || !this.trait() || !this.animal()) {
       alert('กรุณาตอบคำถามให้ครบก่อนสวมหมวกคัดสรร!');
       return;
@@ -51,11 +51,11 @@ export class SortingHatPage {
     }
   }
 
-  // ฟังก์ชันล้างค่าฟอร์มเพื่อเล่นใหม่
+  // ฟังก์ชันกดย้อนกลับเพื่อรีเซ็ตค่าฟอร์ม และเล่นใหม่ตั้งแต่แรก
   resetForm() {
-    this.userName.set('');
-    this.trait.set('');
-    this.animal.set('');
-    this.sortedHouse.set('');
+    this.userName.set(''); // ล้างชื่อ
+    this.trait.set(''); // ล้างจุดเด่น
+    this.animal.set(''); // ล้างสัตว์
+    this.sortedHouse.set(''); // ล้างผลลัพธ์บ้าน
   }
 }

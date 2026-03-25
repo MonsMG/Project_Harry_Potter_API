@@ -4,15 +4,20 @@
     <div class="content-body">
       
       <div class="page-header">
+        <!-- ปุ่มสำหรับกดย้อนกลับไปหน้าก่อนหน้า -->
         <a tabindex="0" (keydown.enter)="goBack()" (click)="goBack()" class="back-link cursor-pointer">← ย้อนกลับ</a>
         <div class="artifact-divider"></div>
       </div>
 
+      <!-- ตรวจสอบสถานะการโหลดข้อมูลของ spellData -->
       @if (spellData.isLoading()) {
+        <!-- กรณีที่กำลังโหลดข้อมูลให้แสดงข้อความโหลด -->
         <div class="loading-state">🪄 กำลังร่ายมนตร์...</div>
       } @else if (spellData.error()) {
+        <!-- กรณีที่เกิดข้อผิดพลาดในการดึงข้อมูล -->
         <div class="error-state">⚠️ ไม่พบข้อมูลคาถานี้</div>
       } @else {
+        <!-- กรณีที่โหลดข้อมูลสำเร็จ แสดงรายละเอียดของคาถา -->
         <div class="spell-detail">
           <span class="spell-icon">🪄</span>
           <h1 class="spell-name">{{ spellData.value()?.name }}</h1>
