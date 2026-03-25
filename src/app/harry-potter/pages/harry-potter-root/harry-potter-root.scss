@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* นำเข้าฟอนต์ Cinzel หากยังไม่ได้ใส่ใน index.html */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&display=swap');
 
@@ -65,11 +66,243 @@
           }
         }
       }
+=======
+/* 🌌 นำเข้าฟอนต์เวทมนตร์ */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;800&family=Crimson+Pro:ital,wght@0,400;1,600&display=swap');
+
+$color-gold: #fbbf24;
+$color-gold-dark: #d97706;
+$color-bg-base: #0f172a;
+$color-bg-top: #1e293b;
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 10%, $color-bg-top 0%, $color-bg-base 100%);
+  color: #e5e7eb;
+  font-family: 'Crimson Pro', serif;
+  position: relative;
+  overflow-x: hidden;
+
+  /* ✨ ละอองดาวเวทมนตร์ (พื้นหลังลอยไปมาทั้งเว็บ) */
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(white, rgba(255,255,255,0.2) 2px, transparent 40px),
+      radial-gradient($color-gold, rgba(251,191,36,0.1) 1px, transparent 30px);
+    background-size: 550px 550px, 350px 350px;
+    opacity: 0.15;
+    animation: stardustFloat 100s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* เอาไปวางไว้ข้างใน :host { ... } ของไฟล์ harry-potter-root.scss */
+
+  /* 🟡 ลูกสนิทช์สีทอง (Golden Snitch) */
+  &::after {
+    content: '';
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, #fff 10%, #fbbf24 80%);
+    border-radius: 50%;
+    box-shadow: 0 0 20px 5px rgba(251, 191, 36, 0.8), 0 0 40px 10px rgba(251, 191, 36, 0.4);
+    z-index: 9999;
+    pointer-events: none; /* เพื่อไม่ให้ลูกสนิทช์บังการคลิกปุ่ม */
+    
+    /* บินโฉบไปมาทุกๆ 15 วินาที */
+    animation: snitchFly 15s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  }
+}
+
+@keyframes stardustFloat {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+/* ================= HEADER ================= */
+.magical-header {
+  position: relative;
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), transparent);
+  padding: 4rem 1rem 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+  z-index: 10;
+
+  .header-content {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .site-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    
+    /* ✨ สีทองแบบโลหะเงางาม */
+    background: linear-gradient(to bottom, #fff 0%, $color-gold 50%, $color-gold-dark 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* ✨ แอนิเมชันเปิดตัวเว็บ และลอยไปมาแบบมีมิติ */
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.6));
+    /* แก้ไขใน .site-title */
+    animation: titleEntrance 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), wingardiumLeviosa 4s ease-in-out infinite alternate 1.5s;
+    z-index: 2;
+  }
+
+  /* ✨ เอฟเฟกต์แสง Lumos ที่เต้นตามจังหวะ */
+  .lumos-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.35) 0%, transparent 70%);
+    filter: blur(50px);
+    z-index: 1;
+    pointer-events: none;
+    animation: lumosPulse 4s ease-in-out infinite;
+  }
+
+  .artifact-divider {
+    margin: 1.5rem auto 0;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, $color-gold, transparent);
+    opacity: 0.8;
+    box-shadow: 0 0 15px $color-gold;
+  }
+}
+
+/* 🔄 Animations สำหรับ Header */
+@keyframes titleEntrance {
+  0% { opacity: 0; transform: translateY(-40px) scale(0.9); filter: blur(20px); letter-spacing: 0.8em; }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); letter-spacing: 0.25em; }
+}
+
+/* 🎯 คาถายกของลอย (ดิ้นสุดๆ) */
+@keyframes wingardiumLeviosa {
+  0% { 
+    transform: translateY(0) rotate(0deg) scale(1); 
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.5)); 
+  }
+  33% { 
+    transform: translateY(-15px) rotate(-3deg) scale(1.05); 
+    filter: drop-shadow(0 0 35px rgba(251, 191, 36, 0.9)); 
+  }
+  66% { 
+    transform: translateY(12px) rotate(2deg) scale(0.96); 
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.6)); 
+  }
+  100% { 
+    transform: translateY(-8px) rotate(-1.5deg) scale(1.02); 
+    filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.8)); 
+  }
+}
+
+@keyframes lumosPulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* ================= NAVBAR ================= */
+.magical-nav {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(251, 191, 36, 0.15);
+  position: sticky; /* ✨ ให้เมนูติดขอบจอเวลาเลื่อนลง */
+  top: 0;
+  z-index: 50;
+
+  .nav-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    list-style: none;
+    margin: 0;
+  }
+
+  .btn-nav {
+    /* 🎯 พระเอกของเรา ทำให้ขยับและเด้งได้! */
+    display: inline-block; 
+    
+    padding: 0.6rem 1.5rem;
+    border-radius: 999px;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    color: #e5e7eb;
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    
+    /* 🎯 ความสมูทแบบเด้งดึ๋ง */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+
+    /* ✨ เอฟเฟกต์ hover เด้งขึ้นและขยายตัว */
+    &:hover {
+      background: rgba(251, 191, 36, 0.15);
+      color: $color-gold;
+      border-color: rgba(251, 191, 36, 0.6);
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+      transform: translateY(-6px) scale(1.05); 
+    }
+
+    /* 🎯 หน้าปัจจุบัน (Active) */
+    &.active {
+      background: linear-gradient(135deg, $color-gold-dark, $color-gold);
+      color: #0f172a;
+      font-weight: 800;
+      border-color: transparent;
+      box-shadow: 0 5px 20px rgba(251, 191, 36, 0.6);
+      transform: scale(1.05); 
+>>>>>>> Stashed changes
     }
   }
 }
 
+<<<<<<< Updated upstream
 main {
   /* เพิ่ม padding ด้านบนให้มีระยะห่างจาก Navbar สวยๆ */
   @apply container mx-auto p-4 md:p-8 min-h-[70vh] mt-8;
+=======
+/* ================= MAIN CONTENT ================= */
+.magical-content-cover {
+  position: relative;
+  padding: 2rem;
+  min-height: calc(100vh - 200px);
+  z-index: 1; /* ให้อยู่เหนือละอองดาว แต่ใต้เมนู */
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .magical-header .site-title { font-size: 2rem; letter-spacing: 0.15em; }
+  .magical-nav .nav-button-group { flex-wrap: wrap; gap: 0.5rem; }
+  .magical-nav .btn-nav { font-size: 0.8rem; padding: 0.5rem 1rem; }
+>>>>>>> Stashed changes
+}
+
+@keyframes snitchFly {
+  0%   { top: 10%; left: -10%; transform: scale(1); }
+  15%  { top: 70%; left: 20%; transform: scale(1.5); }
+  30%  { top: 30%; left: 50%; transform: scale(0.8); }
+  45%  { top: 80%; left: 80%; transform: scale(2); }
+  60%  { top: 20%; left: 90%; transform: scale(0.5); }
+  75%  { top: 50%; left: 110%; transform: scale(1.2); }
+  100% { top: 10%; left: 120%; transform: scale(1); }
 }

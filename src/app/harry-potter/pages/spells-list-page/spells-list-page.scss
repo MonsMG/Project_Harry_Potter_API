@@ -1,13 +1,24 @@
+<<<<<<< Updated upstream
 // Variables (Optional, but good practice to keep here if not in global)
 $color-gold: #e9c46a;
 $color-gold-glow: rgba(233, 196, 106, 0.3);
 $font-title: 'Cinzel', serif;
+=======
+// ✨ Spells List Page — Magical Grimoire Style
+$color-gold: #e9c46a;
+$color-gold-bright: #fbbf24;
+$color-gold-dim: rgba(233, 196, 106, 0.3);
+$color-bg: #0f172a;
+$font-title: 'Cinzel', serif;
+$font-deco: 'Cinzel Decorative', serif;
+>>>>>>> Stashed changes
 $font-body: 'Crimson Pro', serif;
 
 .spells-list-container {
   @apply max-w-7xl mx-auto p-6 md:p-12 min-h-screen;
   font-family: $font-body;
 
+<<<<<<< Updated upstream
   /* Header Section */
   .page-header {
     @apply text-center mb-16 relative flex flex-col items-center;
@@ -51,9 +62,79 @@ $font-body: 'Crimson Pro', serif;
           --tw-ring-color: rgba(233, 196, 106, 0.3);
         }
       }
+=======
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+
+  &::before {
+    content: '✦  ✦  ✦';
+    display: block;
+    color: $color-gold-dim;
+    font-family: $font-title;
+    font-size: 0.7rem;
+    letter-spacing: 0.6em;
+  }
+
+  .title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 0.08em;
+    font-family: $font-deco;
+    color: $color-gold;
+    text-shadow:
+      0 0 25px rgba(233, 196, 106, 0.5),
+      0 0 70px rgba(233, 196, 106, 0.15);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 180px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $color-gold, transparent);
+    box-shadow: 0 0 12px rgba(233, 196, 106, 0.6);
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 28rem;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    outline: none;
+    transition: all 0.4s ease;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(233, 196, 106, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
+    color: #fefce8;
+    font-family: $font-body;
+    font-size: 1.1rem;
+    text-align: center;
+
+    &::placeholder {
+      color: rgba(233, 196, 106, 0.35);
+      font-style: italic;
+    }
+
+    &:focus {
+      border-color: rgba(233, 196, 106, 0.7);
+      box-shadow:
+        0 0 0 3px rgba(233, 196, 106, 0.07),
+        0 0 25px rgba(233, 196, 106, 0.15),
+        inset 0 0 10px rgba(233, 196, 106, 0.05);
+      transform: translateY(-2px);
+      background: rgba(15, 23, 42, 0.95);
+>>>>>>> Stashed changes
     }
   }
 
+<<<<<<< Updated upstream
   /* Magical Spell Card (Mini) */
   .spell-card-mini {
     @apply relative rounded-2xl border transition-all duration-500 cursor-pointer 
@@ -119,4 +200,96 @@ $font-body: 'Crimson Pro', serif;
       p { @apply text-slate-500; }
     }
   }
+=======
+.status {
+  text-align: center;
+  padding: 5rem 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  font-family: $font-title;
+  color: $color-gold;
+  animation: lumos-pulse 2s ease-in-out infinite;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-page {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(233, 196, 106, 0.25);
+  color: $color-gold;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: rgba(15, 23, 42, 0.6);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+
+  &:hover:not(:disabled) {
+    background: rgba(233, 196, 106, 0.1);
+    border-color: rgba(233, 196, 106, 0.5);
+    box-shadow: 0 0 12px rgba(233, 196, 106, 0.15);
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: linear-gradient(135deg, #c9973a, $color-gold);
+    border-color: $color-gold;
+    color: $color-bg;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(233, 196, 106, 0.4);
+  }
+}
+
+.btn-nav-arrow { padding: 0.5rem 1.25rem; }
+.btn-page-number { width: 2.5rem; height: 2.5rem; }
+
+.pagination-summary {
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgba(148, 163, 184, 0.55);
+  font-family: $font-body;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+@keyframes lumos-pulse {
+  0%, 100% { opacity: 0.6; text-shadow: 0 0 8px rgba(233, 196, 106, 0.3); }
+  50% { opacity: 1; text-shadow: 0 0 24px rgba(233, 196, 106, 0.7); }
+}
+
+.spell-card-mini {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(233, 196, 106, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  &:hover {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: $color-gold-bright;
+    box-shadow: 0 0 25px rgba(233, 196, 106, 0.3);
+    
+    .sparkle {
+      animation: sparkleSpin 0.8s ease-in-out;
+      color: #fff;
+    }
+  }
+}
+
+@keyframes sparkleSpin {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(2) rotate(180deg); opacity: 0; }
+>>>>>>> Stashed changes
 }

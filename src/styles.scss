@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* ✨ Magical Artifact Design System — Global Base Layer */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;500;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
 
@@ -137,3 +138,17 @@ $color-bg-deep: #0f172a; // Deep Slate
   background-color: rgba($color-bg-deep, 0.85); // มืดจางๆ 85% เพื่อให้อ่านตัวหนังสือชัด
   backdrop-filter: blur(5px);
 }
+=======
+/* =========================================
+   🪄 CUSTOM MAGIC CURSORS
+   ========================================= */
+/* เมาส์ปกติเป็นรูปไม้กายสิทธิ์ */
+body {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='font-size:26px;'><text y='50%'>🪄</text></svg>") 0 0, auto !important;
+}
+
+/* เวลาชี้ปุ่มหรือลิงก์ เปลี่ยนเป็นประกายแสง */
+a, button, input, select, .house-card, .magical-portrait-card, .spell-card-mini {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='font-size:26px;'><text y='50%'>✨</text></svg>") 12 12, pointer !important;
+}
+>>>>>>> Stashed changes

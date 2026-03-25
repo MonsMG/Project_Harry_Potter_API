@@ -12,6 +12,7 @@ $font-body: 'Crimson Pro', serif;
 :host > div {
   @apply relative mx-auto rounded-3xl overflow-hidden border;
   max-width: 42rem;
+<<<<<<< Updated upstream
   padding: 3rem;
   background-color: #111827;
   background-image: radial-gradient(circle at center, #1e293b 0%, #111827 100%);
@@ -50,3 +51,265 @@ button[type='submit'] {
     transform: translateY(0);
   }
 }
+=======
+  margin: 2.5rem auto;
+  padding: 3rem; /* เพิ่ม padding ให้ดูโปร่งขึ้น */
+  background: rgba(15, 23, 42, 0.85); /* ปรับให้เข้มขลังขึ้น */
+  backdrop-filter: blur(20px);
+  border-radius: 2rem;
+  
+  /* ✨ ปรับ Border ให้เป็นสีทองสว่างและเพิ่มแสงฟุ้ง */
+  border: 2px solid $color-gold;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(233, 196, 106, 0.1);
+  
+  /* ✨ แอนิเมชันตอนเปิดหน้าเว็บ */
+  animation: entranceMagic 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  color: #e2e8f0;
+}
+
+/* ================= HEADER ================= */
+.sorting-hat-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.hat-icon {
+  font-size: 6rem; /* ขยายขนาดหมวก */
+  display: block;
+  margin: 0 auto 1.5rem;
+  
+  /* ✨ เพิ่ม Glow และแอนิเมชันหมวกพูดได้ */
+  filter: drop-shadow(0 0 25px $color-gold);
+  animation: hatTalk 3s ease-in-out infinite;
+}
+
+.sorting-hat-title {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: 'Cinzel Decorative', serif; /* ใช้แบบ Decorative ให้ดูขลัง */
+  background: linear-gradient(to right, #fde68a, #f59e0b, #d97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.5rem;
+}
+
+.sorting-hat-subtitle {
+  color: rgba(253, 230, 138, 0.6);
+  margin-top: 0.5rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* ================= FORM CONTROLS ================= */
+.sorting-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* เพิ่มระยะห่างระหว่างกลุ่ม input */
+  position: relative;
+  z-index: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #f59e0b; /* สีทองเข้ม */
+  letter-spacing: 0.1em;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+  margin-left: 0.5rem;
+}
+
+/* ปรับแต่งช่อง Input และ Select ให้เป็นสไตล์พรีเมียม */
+.form-input,
+.form-select {
+  background: rgba(15, 23, 42, 0.4) !important; /* พื้นหลังโปร่งแสง */
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(251, 191, 36, 0.2) !important;
+  padding: 1.25rem 1.5rem !important;
+  border-radius: 1.2rem !important;
+  color: #f8fafc !important;
+  font-size: 1.05rem !important;
+  font-family: 'Crimson Pro', serif;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  &::placeholder {
+    color: rgba(148, 163, 184, 0.5);
+    font-style: italic;
+  }
+
+  /* ✨ เอฟเฟกต์เมื่อคลิก (Focus) */
+  &:focus {
+    border-color: #fbbf24 !important;
+    background: rgba(15, 23, 42, 0.7) !important;
+    box-shadow: 
+      0 0 0 4px rgba(251, 191, 36, 0.1),
+      0 0 20px rgba(251, 191, 36, 0.2),
+      inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); /* ลอยขึ้นเล็กน้อย */
+  }
+}
+
+/* ปรับแต่งลูกศรของ Select */
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23fbbf24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.5rem center;
+  background-size: 1.2rem;
+  cursor: pointer;
+
+  option {
+    background: #0f172a; /* สีพื้นหลังของ dropdown */
+    color: #f8fafc;
+    padding: 1rem;
+  }
+}
+
+/* ปุ่มกดสวมหมวกคัดสรร */
+.submit-btn {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  border: none;
+  background: linear-gradient(135deg, #d97706, #fbbf24, #d97706);
+  background-size: 200% auto;
+  color: #0f172a;
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: 'Cinzel', serif;
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-position: right center;
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+    transform: translateY(-3px);
+  }
+}
+
+/* ================= RESULT SECTION ================= */
+.result-section {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.user-name {
+  font-weight: 700;
+  color: #fff;
+  font-size: 2.8rem;
+  margin-top: 1rem;
+  display: block;
+  font-family: 'Cinzel Decorative', serif;
+  text-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+}
+
+.house-reveal {
+  position: relative;
+  padding: 3rem 0;
+}
+
+.house-name {
+  position: relative;
+  font-size: 5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: 'Cinzel Decorative', serif;
+  
+  /* ✨ ไล่สีแบบโลหะทองพรีเมียม */
+  background: linear-gradient(to bottom, #fff 0%, $color-gold 50%, #8b5e1a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* ✨ แสงเรืองรองและแอนิเมชันเปิดตัวบ้าน */
+  filter: drop-shadow(0 0 30px rgba(251, 191, 36, 1));
+  animation: revealHouse 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.members-section {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(251, 191, 36, 0.1);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes entranceMagic {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9) translateY(40px); 
+    filter: blur(15px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+    filter: blur(0); 
+  }
+}
+
+@keyframes hatTalk {
+  0%, 100% { transform: rotate(-5deg) scale(1); }
+  50% { transform: rotate(5deg) scale(1.1); }
+}
+
+@keyframes revealHouse {
+  from { 
+    letter-spacing: 30px; 
+    opacity: 0; 
+    filter: blur(20px); 
+    transform: scale(0.8);
+  }
+  to { 
+    letter-spacing: 0.1em; 
+    opacity: 1; 
+    filter: blur(0); 
+    transform: scale(1);
+  }
+}
+
+/* ================= SCROLLBAR & OTHERS ================= */
+.custom-scrollbar {
+  &::-webkit-scrollbar { width: 6px; }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(245, 158, 11, 0.4);
+    border-radius: 10px;
+    &:hover { background: rgba(245, 158, 11, 0.8); }
+  }
+}
+
+.reset-btn {
+  margin-top: 3rem;
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid $color-gold;
+  color: $color-gold;
+  font-family: 'Cinzel', serif;
+  transition: all 0.3s ease;
+  &:hover {
+    background: rgba(233, 196, 106, 0.1);
+    box-shadow: 0 0 15px rgba(233, 196, 106, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .sorting-hat-title { font-size: 1.8rem; }
+  .house-name { font-size: 3rem; }
+  .user-name { font-size: 2rem; }
+}
+>>>>>>> Stashed changes

@@ -1,42 +1,58 @@
-/* 1. นำเข้าฟอนต์เวทมนตร์จาก Google Fonts (ห้ามลืมบรรทัดนี้เด็ดขาด!) */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Crimson+Pro:ital,wght@0,400;1,600&display=swap');
 
-/* SCSS Variables */
 $color-gold: #e9c46a;
+$color-gold-bright: #fbbf24;
 $color-bg-deep: #0f172a;
 
-.site-header {
-  @apply relative py-12 px-4 text-center overflow-hidden;
+:host {
+  display: block;
+  min-height: 100vh;
+  /* พื้นหลังไล่สีแบบลึกมีมิติ */
+  background: radial-gradient(circle at 50% -20%, #1e293b 0%, #0f172a 80%);
+  position: relative;
+  overflow-x: hidden;
 
-  /* ทำให้พื้นหลังกลืนไปกับสีของเว็บด้านล่าง ไม่ดูเป็นก้อนตัดฉับ */
-  background: linear-gradient(to bottom, $color-bg-deep 0%, transparent 100%);
-
-  .header-content {
-    @apply relative flex flex-col items-center justify-center gap-4;
-  }
-
-  /* ปรับแสง Lumos ให้ฟุ้งตรงกลางพอดี ไม่สว่างจนกวนสายตา */
-  .lumos-glow {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[150px] blur-[60px] opacity-30;
-    background: $color-gold;
+  /* ✨ เพิ่มละอองดาวกระจายทั่วเว็บ */
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(white, rgba(255,255,255,0.2) 2px, transparent 40px),
+      radial-gradient($color-gold, rgba(233,196,106,0.1) 1px, transparent 30px);
+    background-size: 550px 550px, 350px 350px;
+    opacity: 0.15;
+    animation: stardustFloat 100s linear infinite;
     pointer-events: none;
     z-index: 0;
-    border-radius: 50%;
+  }
+}
+
+@keyframes stardustFloat {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+.site-header {
+  @apply relative py-16 text-center;
+  
+  .lumos-glow {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] blur-[120px] opacity-40;
+    background: radial-gradient(circle, $color-gold 0%, transparent 70%);
+    animation: lumosPulse 5s ease-in-out infinite;
   }
 
-  /* Typography ที่ขลังและดูแพง */
   .site-title {
-    @apply relative z-10 text-4xl md:text-6xl font-black m-0 tracking-[0.1em];
-    font-family: 'Cinzel Decorative', serif;
-    color: $color-gold;
-    /* แสงเงาเรืองแสงรอบตัวหนังสือ */
-    text-shadow: 0 0 15px rgba(233, 196, 106, 0.5);
+    @apply relative z-10 text-5xl md:text-7xl font-black m-0 tracking-[0.25em];
+    font-family: 'Cinzel Decorative', cursive;
+    background: linear-gradient(to bottom, #fff 20%, $color-gold 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(233, 196, 106, 0.6));
   }
+}
 
-  /* เส้นคั่นไม้กายสิทธิ์ */
-  .artifact-divider {
-    @apply relative z-10 w-32 h-px opacity-70;
-    background: linear-gradient(90deg, transparent, $color-gold, transparent);
-    box-shadow: 0 0 10px rgba(233, 196, 106, 0.8);
-  }
+@keyframes lumosPulse {
+  0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.15); }
 }

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 $color-gold: #e9c46a;
 
 .houses-grid-container {
@@ -18,9 +19,30 @@ $color-gold: #e9c46a;
     color: #cbd5e1; // สี slate-300
     font-family: 'Cinzel Decorative', serif;
   }
+=======
+.houses-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem;
+  max-width: 1000px;
+  margin: 4rem auto;
+}
+
+.house-card {
+  position: relative;
+  height: 260px;
+  border-radius: 2.5rem;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(233, 196, 106, 0.2);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: visible; /* ให้แสงฟุ้งออกมาได้ */
+  text-decoration: none !important; /* ✅ ลบเส้นใต้ลิงก์ออก */
+>>>>>>> Stashed changes
 
   // ✨ เอฟเฟกต์เวลา Hover: การ์ดนูนขึ้น ขอบสว่างขึ้น และสีทองเรืองแสง
   &:hover {
+<<<<<<< Updated upstream
     @apply border-amber-500/50 -translate-y-3 bg-slate-900 shadow-[0_15px_40px_rgba(217,119,6,0.15)];
 
     .house-emblem {
@@ -32,3 +54,53 @@ $color-gold: #e9c46a;
     }
   }
 }
+=======
+    transform: translateY(-20px) scale(1.05);
+    text-decoration: none !important; /* กันเหนียวตอน hover */
+    
+    .house-emblem {
+      transform: scale(1.25) rotate(10deg);
+      filter: drop-shadow(0 0 25px rgba(233, 196, 106, 0.8));
+    }
+  }
+}
+
+/* 🎯 ขอบเรืองแสงแบบจัดเต็ม (Glow Border) */
+.gryffindor-card:hover { border-color: #740001; box-shadow: 0 0 30px #740001, 0 0 60px rgba(116, 0, 1, 0.4); }
+.slytherin-card:hover { border-color: #1a472a; box-shadow: 0 0 30px #1a472a, 0 0 60px rgba(26, 71, 42, 0.4); }
+.ravenclaw-card:hover { border-color: #0e1a40; box-shadow: 0 0 30px #0e1a40, 0 0 60px rgba(14, 26, 64, 0.4); }
+.hufflepuff-card:hover { border-color: #ecb939; box-shadow: 0 0 30px #ecb939, 0 0 60px rgba(236, 185, 57, 0.4); }
+
+/* 📂 แก้ไขใน houses-list.scss */
+
+.house-title {
+  @apply relative;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.8rem;
+  color: #fbbf24; /* สีทองสว่าง */
+  margin-top: 1rem;
+  letter-spacing: 2px;
+  text-decoration: none !important; /* ลบเส้นม่วงถาวร */
+  transition: all 0.4s ease; /* เตรียมตัวสำหรับ hover */
+
+  /* ✨ แอนิเมชันตัวหนังสืออมพลังเวทมนตร์เบาๆ */
+  animation: houseTitleGlow 4s ease-in-out infinite;
+}
+
+.house-card:hover {
+  /* ... โค้ดเดิมของคุณ ... */
+  
+  .house-title {
+    /* ✨ ชื่อบ้านพุ่งออกมาพร้อมแสงฟุ้งเว่อร์ */
+    transform: translateY(-5px);
+    text-shadow: 0 0 20px rgba(251, 191, 36, 1), 0 0 30px rgba(251, 191, 36, 0.4);
+    letter-spacing: 4px; /* ตัวอักษรขยายออก */
+  }
+}
+
+/* 🔄 แอนิเมชัน Glow เบาๆ สำหรับ Idling */
+@keyframes houseTitleGlow {
+  0%, 100% { text-shadow: 0 0 8px rgba(251, 191, 36, 0.4); }
+  50% { text-shadow: 0 0 15px rgba(251, 191, 36, 0.7); }
+}
+>>>>>>> Stashed changes
