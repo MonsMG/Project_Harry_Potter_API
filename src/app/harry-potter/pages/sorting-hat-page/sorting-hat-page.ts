@@ -21,11 +21,11 @@ export class SortingHatPage {
 
   // 🎯 ดึงข้อมูลศิษย์เก่าของบ้านนั้นๆ จาก API ทันทีที่สุ่มบ้านเสร็จโดยใช้ resource()
   houseMembersData = resource({
-    params: () => this.sortedHouse().toLowerCase(),
+    params: () => this.sortedHouse(),
     loader: async ({ params }) => {
       if (!params) return [];
-      return await fetchCharactersByHouse(params);
-    },
+      return await fetchCharactersByHouse(params.toLowerCase());
+    }
   });
 
   // ฟังก์ชันคำนวณบ้านเมื่อกด Submit ฟอร์ม

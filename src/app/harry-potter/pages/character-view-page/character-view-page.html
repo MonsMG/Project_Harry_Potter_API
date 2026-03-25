@@ -1,16 +1,16 @@
-<div class="py-4">
-  <div class="mb-8">
-    <a tabindex="0" (keydown.enter)="goBack()" (click)="goBack()" class="back-button cursor-pointer">
+<div class="character-view-container">
+  <div class="back-button-wrapper">
+    <a tabindex="0" (keydown.enter)="goBack()" (click)="goBack()" class="back-button">
       <span class="icon">←</span> Return to Roster
     </a>
   </div>
 
   @if (characterData.isLoading()) {
-    <div class="text-center py-32 text-2xl text-amber-500/70 font-serif animate-pulse">
+    <div class="loading-state">
       Searching the archives...
     </div>
   } @else if (characterData.error() || !characterData.value()) {
-    <div class="text-center py-32 text-xl text-red-400 font-serif">
+    <div class="error-state">
       Could not locate this wizard's record.
     </div>
   } @else {

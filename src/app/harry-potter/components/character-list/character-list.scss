@@ -1,0 +1,125 @@
+/* ================= LAYOUT: 2 ROW HORIZONTAL ================= */
+/* 🧠 Logic: grid 2 แถว แล้ว scroll แนวนอน */
+:host {
+  display: block;
+  padding: 2rem;
+}
+
+.character-grid {
+  display: grid !important;
+
+  /* 2 แถว */
+  grid-template-rows: repeat(2, 1fr);
+
+  /* auto column → ยืดไปด้านขวา */
+  grid-auto-flow: column;
+  grid-auto-columns: 200px;
+
+  gap: 1.5rem;
+
+  overflow-x: auto;
+  padding-bottom: 1rem;
+
+  /* scroll สวย ๆ */
+  scrollbar-width: thin;
+}
+
+/* ================= CARD ================= */
+.magical-portrait-card {
+  position: relative;
+  border-radius: 1.2rem;
+  padding: 2px; /* สำคัญ: ใช้ทำ border effect */
+
+  /* 🧠 Logic: ใช้ gradient เป็นกรอบ */
+  background: linear-gradient(120deg, #e9c46a, #fbbf24, #e9c46a);
+
+  /* ✨ animation วิ่ง */
+  background-size: 200% 200%;
+  animation: goldRun 4s linear infinite;
+
+  /* inner card */
+  .image-wrapper,
+  .info-wrapper {
+    background: #0f172a;
+    border-radius: 1rem;
+  }
+
+  /* hover เพิ่ม glow */
+  &:hover {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+  }
+}
+
+/* ================= GOLD RUN ANIMATION ================= */
+@keyframes goldRun {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* ================= IMAGE ================= */
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem 1rem 0 0;
+
+  img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  /* overlay มืด */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+  }
+}
+
+.magical-portrait-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ================= INFO ================= */
+.info-wrapper {
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.name-link {
+  text-decoration: none;
+}
+
+.name-link h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  color: #fbbf24;
+  margin: 0;
+
+  /* truncate */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actor-name {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* ================= EMPTY STATE ================= */
+.empty-state {
+  grid-column: 1 / -1;
+  width: 100%;
+  text-align: center;
+  padding: 5rem 0;
+  color: #64748b;
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 1.125rem;
+}

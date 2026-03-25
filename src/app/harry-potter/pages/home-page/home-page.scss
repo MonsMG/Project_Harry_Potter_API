@@ -1,0 +1,162 @@
+/* ================= PAGE CONTAINER ================= */
+.home-page-container {
+  position: relative;
+  min-height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  gap: 2.5rem;
+  padding: 2rem;
+
+  /* 🧠 Logic: background ลึก + glow */
+  background: radial-gradient(circle at top, rgba(251, 191, 36, 0.08), transparent 40%), #0f172a;
+}
+
+/* ✨ particle เบา ๆ */
+.home-page-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background-image: radial-gradient(rgba(251, 191, 36, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+
+  opacity: 0.15;
+  z-index: 0;
+}
+
+/* ================= HEADER ================= */
+.home-page-header {
+  position: relative;
+  z-index: 1;
+
+  p {
+    color: #fbbf24;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+
+  h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 4rem;
+    color: #fbbf24;
+    margin: 0;
+
+    /* ✨ glow */
+    text-shadow:
+      0 0 10px rgba(251, 191, 36, 0.5),
+      0 0 25px rgba(251, 191, 36, 0.3);
+
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ================= QUOTE ================= */
+blockquote {
+  position: relative;
+  z-index: 1;
+
+  max-width: 600px;
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #e5e7eb;
+  line-height: 1.7;
+
+  padding-left: 1.5rem;
+  border-left: 2px solid rgba(251, 191, 36, 0.5);
+
+  cite {
+    display: block;
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+}
+
+/* ================= BUTTONS ================= */
+.home-page-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* ปุ่มหลัก */
+.magical-btn {
+  position: relative;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+
+  color: #0f172a;
+  background: #fbbf24;
+
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  /* shadow */
+  box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
+
+  /* ✨ shimmer */
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+
+    transition: 0.5s;
+  }
+
+  &:hover::after {
+    left: 100%;
+  }
+
+  &:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(251, 191, 36, 0.5);
+  }
+
+  /* ปุ่มรอง */
+  &:nth-child(2) {
+    background: transparent;
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.5);
+
+    &:hover {
+      background: rgba(251, 191, 36, 0.1);
+    }
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .home-page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  blockquote {
+    font-size: 1rem;
+  }
+}

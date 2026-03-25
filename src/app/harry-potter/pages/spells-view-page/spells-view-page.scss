@@ -1,0 +1,171 @@
+/* ================= PAGE ================= */
+.magical-page-container {
+  min-height: 80vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2rem;
+
+  background: radial-gradient(circle at top, rgba(251, 191, 36, 0.08), transparent 40%), #0f172a;
+}
+
+/* ================= CARD ================= */
+.artifact-card {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+
+  border-radius: 1.5rem;
+  padding: 2rem;
+
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+
+  /* 🟡 กรอบทอง */
+  border: 2px solid #e9c46a;
+
+  /* ✨ glow */
+  box-shadow:
+    0 0 25px rgba(233, 196, 106, 0.25),
+    inset 0 0 20px rgba(233, 196, 106, 0.08);
+}
+
+/* ================= LUMOS ================= */
+.lumos-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 300px;
+  height: 300px;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.2), transparent 70%);
+
+  filter: blur(50px);
+  z-index: 0;
+}
+
+/* ================= CONTENT ================= */
+.content-body {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= HEADER ================= */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: #fbbf24;
+  text-decoration: none;
+  transition: 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+/* เส้นทอง */
+.artifact-divider {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 1px;
+
+  background: linear-gradient(to right, transparent, #fbbf24, transparent);
+}
+
+/* ================= STATES ================= */
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 3rem;
+
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  color: #94a3b8;
+}
+
+/* ================= SPELL DETAIL ================= */
+.spell-detail {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+/* ไอคอน */
+.spell-icon {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+
+  /* 🪄 pulse เบา ๆ */
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* ชื่อคาถา */
+.spell-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.2rem;
+  color: #fbbf24;
+
+  margin: 0;
+
+  text-shadow:
+    0 0 10px rgba(251, 191, 36, 0.5),
+    0 0 25px rgba(251, 191, 36, 0.3);
+}
+
+/* เส้นแบ่ง */
+.spell-divider {
+  margin: 1rem auto;
+  width: 120px;
+  height: 2px;
+
+  background: linear-gradient(to right, transparent, #fbbf24, transparent);
+}
+
+/* คำอธิบาย */
+.spell-description {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.1rem;
+  color: #e5e7eb;
+  line-height: 1.7;
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .artifact-card {
+    padding: 1.5rem;
+  }
+
+  .spell-name {
+    font-size: 1.6rem;
+  }
+}

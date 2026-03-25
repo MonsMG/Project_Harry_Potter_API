@@ -1,6 +1,6 @@
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8">
+<div class="character-grid">
   @for (char of characters(); track char.id) {
-    <div class="magical-portrait-card group">
+    <div class="magical-portrait-card">
       <div class="image-wrapper">
         <img
           [src]="char.image || 'https://placehold.co/400x600/0f172a/e9c46a?text=Unknown'"
@@ -17,7 +17,7 @@
       </div>
     </div>
   } @empty {
-    <div class="col-span-full text-center py-20 text-slate-500 font-serif italic text-lg">
+    <div class="empty-state">
       ...ไม่พบรายชื่อพ่อมดแม่มด...
     </div>
   }

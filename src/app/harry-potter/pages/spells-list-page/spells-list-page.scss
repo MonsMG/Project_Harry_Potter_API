@@ -1,0 +1,122 @@
+$color-gold: #e9c46a;
+
+.spells-list-container {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 0.1em;
+    text-align: center;
+    font-family: 'Cinzel Decorative', serif;
+    color: $color-gold;
+    text-shadow: 0 0 20px rgba(233, 196, 106, 0.3);
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 28rem;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    outline: none;
+    transition: all 0.4s ease;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(233, 196, 106, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    color: #fefce8;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.1rem;
+    text-align: center;
+
+    &::placeholder {
+      color: rgba(233, 196, 106, 0.4);
+      font-style: italic;
+    }
+
+    &:focus {
+      border-color: rgba(233, 196, 106, 0.8);
+      box-shadow:
+        0 0 25px rgba(233, 196, 106, 0.15),
+        inset 0 0 10px rgba(233, 196, 106, 0.1);
+      transform: translateY(-2px);
+      background: rgba(15, 23, 42, 0.9);
+    }
+  }
+}
+
+.status {
+  text-align: center;
+  padding: 5rem 0;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  font-family: 'Cinzel', serif;
+  color: $color-gold;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ================= PAGINATION ================= */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-page {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background: rgba(251, 191, 36, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: #fbbf24;
+    color: #0f172a;
+    font-weight: 700;
+  }
+}
+
+.btn-nav-arrow {
+  padding: 0.5rem 1rem;
+}
+
+.btn-page-number {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.pagination-summary {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #64748b;
+  font-family: 'Crimson Pro', serif;
+  margin-bottom: 1.5rem;
+}

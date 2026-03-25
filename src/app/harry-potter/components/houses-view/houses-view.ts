@@ -11,5 +11,5 @@ import { RouterLink } from '@angular/router';
 })
 export class HousesView {
   // 🎯 รับข้อมูลตัวละคร (Array) จาก Page ด้วย Signal Input
-  readonly houses = input.required<Character[]>();
+  readonly characters = input.required<Character[]>();
 }

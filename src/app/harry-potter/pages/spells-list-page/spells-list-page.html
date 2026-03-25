@@ -15,43 +15,36 @@
   } @else {
     <app-spells-view [spells]="paginatedSpells()" />
 
-    <!-- 🎯 Pagination Controls: ปุ่มเปลี่ยนหน้า -->
     @if (totalPages() > 1) {
-      <div class="flex justify-center items-center gap-3 mt-10 mb-6 flex-wrap">
-        <!-- ปุ่มย้อนกลับ -->
+      <div class="pagination-controls">
         <button
           (click)="goToPage(currentPage() - 1)"
           [disabled]="currentPage() === 1"
-          class="px-4 py-2 rounded-lg border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all font-serif text-sm"
+          class="btn-page btn-nav-arrow"
         >
           ← ก่อนหน้า
         </button>
 
-        <!-- ปุ่มเลขหน้า -->
         @for (page of [].constructor(totalPages()); track $index) {
           <button
             (click)="goToPage($index + 1)"
-            [class.bg-amber-500]="currentPage() === $index + 1"
-            [class.text-slate-900]="currentPage() === $index + 1"
-            [class.font-bold]="currentPage() === $index + 1"
-            class="w-10 h-10 rounded-lg border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 transition-all font-serif text-sm"
+            [class.active]="currentPage() === $index + 1"
+            class="btn-page btn-page-number"
           >
             {{ $index + 1 }}
           </button>
         }
 
-        <!-- ปุ่มถัดไป -->
         <button
           (click)="goToPage(currentPage() + 1)"
           [disabled]="currentPage() === totalPages()"
-          class="px-4 py-2 rounded-lg border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all font-serif text-sm"
+          class="btn-page btn-nav-arrow"
         >
           ถัดไป →
         </button>
       </div>
 
-      <!-- แสดงข้อความสรุป -->
-      <p class="text-center text-sm text-slate-500 font-serif mb-6">
+      <p class="pagination-summary">
         หน้า {{ currentPage() }} จาก {{ totalPages() }} (ทั้งหมด {{ filteredSpells().length }} คาถา)
       </p>
     }

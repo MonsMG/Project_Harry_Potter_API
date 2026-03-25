@@ -1,6 +1,6 @@
 <div class="character-grid">
-  @for (char of houses(); track char.id) {
-    <div class="character-card flex flex-col">
+  @for (char of characters(); track char.id) {
+    <div class="character-card">
       <div class="card-image-wrapper">
         <img
           [src]="char.image || 'https://placehold.co/400x600/1e293b/a1a1aa?text=No+Image'"
@@ -10,11 +10,10 @@
         <div class="image-fade"></div>
       </div>
 
-      <div class="card-info flex-grow text-center flex flex-col justify-end">
+      <div class="card-info">
         <a
           [routerLink]="['/characters', char.id]"
-          class="block text-gold hover:text-amber-200 transition-colors"
-          style="text-decoration: none;"
+          class="char-link"
         >
           <h3 class="char-name" [title]="char.name">{{ char.name }}</h3>
         </a>

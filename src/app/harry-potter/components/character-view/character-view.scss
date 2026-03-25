@@ -1,0 +1,171 @@
+/* ================= PAGE CENTER ================= */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+  padding: 2rem;
+}
+
+/* ================= CARD ================= */
+.magical-dossier-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+
+  max-width: 1000px;
+  width: 100%;
+
+  padding: 2rem;
+  border-radius: 1.5rem;
+
+  background: #0f172a;
+
+  /* 🧠 Logic: ซ้อน layer เพื่อทำ “กรอบวิ่ง” */
+  z-index: 0;
+}
+
+/* ================= ✨ GOLD RUN BORDER ================= */
+/* 🧠 Logic: ใช้ pseudo-element ทำ border แยก */
+.magical-dossier-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 2px;
+
+  background: linear-gradient(
+    120deg,
+    #e9c46a,
+    #fbbf24,
+    #e9c46a
+  );
+
+  background-size: 200% 200%;
+  animation: borderRun 4s linear infinite;
+
+  /* 🧠 เทคนิค mask → ทำให้เหลือแค่ขอบ */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  z-index: -1;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes borderRun {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* ================= PORTRAIT ================= */
+.portrait-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-frame {
+  padding: 0.4rem;
+  border-radius: 1rem;
+
+  background: linear-gradient(135deg, #e9c46a, #fbbf24);
+
+  img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 0.8rem;
+  }
+}
+
+/* ================= DETAILS ================= */
+.details-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ชื่อ */
+.character-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.2rem;
+  color: #fbbf24;
+  text-align: center;
+
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
+}
+
+/* divider */
+.gold-divider {
+  margin: 1rem auto 2rem;
+  width: 120px;
+  height: 2px;
+
+  background: linear-gradient(to right, transparent, #fbbf24, transparent);
+}
+
+/* ================= GRID ================= */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem 2rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .value {
+    font-size: 1rem;
+    color: #e5e7eb;
+  }
+
+  .actor {
+    color: #e9c46a;
+  }
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+/* ================= HOVER EFFECT ================= */
+/* 🧠 Logic: hover แล้ว glow แรงขึ้น */
+.magical-dossier-card:hover::before {
+  filter: brightness(1.2);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .magical-dossier-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: span 1;
+  }
+
+  .image-frame img {
+    height: 300px;
+  }
+}
